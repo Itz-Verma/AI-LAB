@@ -49,6 +49,16 @@ class Nqueens:
         curr_board_config = self.init_curr_board_config()
         solve(curr_board_config,0)
         return self.safe_configs
+def show_safe_states(safe_states):
+    i=1
+    for safe_state in safe_states:
+        print("state:", i)
+        for row in safe_state:
+            for cell in row:
+                print(cell, sep=' ', end= ' ')
+            print()
+        i+=1
+        
 
 if __name__ == "__main__":
     n=4
@@ -59,8 +69,10 @@ if __name__ == "__main__":
 
     nqueen = Nqueens(n)
     safe_states = nqueen.solve_n_queens()
-    print(safe_states)
-    print(len(safe_states))
+    if len(safe_states) == 0:
+        print("No solution exists.")
+    else:
+        show_safe_states(safe_states)
     
 
         
